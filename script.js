@@ -25,8 +25,8 @@ boxes.forEach((box)=>{
             box.style.color="#1E2EDE";
             turnO=true;
         }
+        buttoncount();
         box.disabled=true;
-        buttoncount()
         checkWinner();
     })
 });
@@ -41,6 +41,7 @@ const checkWinner=()=>{
         if(pos1Val!="" && pos2Val!="" && pos3Val!=""){
             if(pos1Val==pos2Val && pos2Val==pos3Val){
                 showWinningMsg(pos1Val);
+                count=0;
             }
         }
     }
@@ -54,12 +55,13 @@ function showWinningMsg(winner){
     disabledbutton();
 };
 
-var count=0;
+let count=0;
 function buttoncount(){
     count++;
     console.log(count);
     if(count==9){
         showTiemsg();
+        count=0;
     }
 }
 
@@ -69,6 +71,7 @@ function showTiemsg(){
     winmsg.style.color=""
     msgcontainer.classList.remove("hide");
     disabledbutton();
+    count=0;
 }
 
 // Disable the button after the winner is anounced
@@ -91,6 +94,7 @@ const resetgame=()=>{
     turnO=true;
     enablebutton();
     msgcontainer.classList.add("hide");
+    count=0;
 };
 
 
